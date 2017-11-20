@@ -2,6 +2,9 @@ package com.yugantjoshi.whereru;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.yugantjoshi.whereru.model.Building;
@@ -14,6 +17,8 @@ public class BuildingsActivity extends AppCompatActivity {
     Campus CAC, BUS, LIV, C_D;
     ArrayList<Building> collegeAveBuildings, buschBuildings, livingstonBuildings, cookDouglassBuildings;
     private ListView campusListview;
+    String[] campusNames = new String[4];
+    ArrayAdapter<String> campusNamesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,13 @@ public class BuildingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_buildings);
 
         buildCampus();
+
+        campusListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
 
     }
 
@@ -80,5 +92,13 @@ public class BuildingsActivity extends AppCompatActivity {
         cookDouglassBuildings.add(new Building("Thompson Hall", 6004));
         cookDouglassBuildings.add(new Building("Waller Hall", 6000));
 
+        campusNames[0] = CAC.getCampusTitle();
+        campusNames[1] = BUS.getCampusTitle();
+        campusNames[2] = LIV.getCampusTitle();
+        campusNames[3] = C_D.getCampusTitle();
+
+        campusNamesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, campusNames);
+        campusListview = (ListView)findViewById(R.id.campus_listview);
+        campusListview.setAdapter(campusNamesAdapter);
     }
 }
