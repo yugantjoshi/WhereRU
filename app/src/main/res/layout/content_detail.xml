@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_detail">
 
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -78,5 +78,70 @@
             android:textColor="#fff" />
 
 
-    </LinearLayout>
+    </LinearLayout> -->
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:stretchColumns="1">
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/description"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:id="@+id/detail_description"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" />
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/address"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/street"
+                android:layout_column="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/city_state_postal"
+                android:layout_column="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp" />
+        </TableRow>
+        <TableRow>
+            <Button
+                android:id="@+id/directions_button"
+                android:layout_column="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/button_directions"
+                android:textColor="#fff" />
+        </TableRow>
+
+    </TableLayout>
 </android.support.v4.widget.NestedScrollView>
