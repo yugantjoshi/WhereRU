@@ -1,10 +1,15 @@
 package com.yugantjoshi.whereru.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by yugantjoshi on 11/20/17.
  */
 
-public class Building {
+public class Building implements Serializable {
     String buildingTitle;
     int buildingNum;
 
@@ -12,6 +17,12 @@ public class Building {
         this.buildingTitle = buildingTitle;
         this.buildingNum = buildingNum;
     }
+
+    protected Building(Parcel in) {
+        buildingTitle = in.readString();
+        buildingNum = in.readInt();
+    }
+
 
     public int getBuildingNum() {
         return buildingNum;
@@ -28,4 +39,5 @@ public class Building {
     public void setBuildingTitle(String buildingTitle) {
         this.buildingTitle = buildingTitle;
     }
+
 }
