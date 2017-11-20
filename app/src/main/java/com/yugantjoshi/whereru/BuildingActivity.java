@@ -1,5 +1,6 @@
 package com.yugantjoshi.whereru;
 
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,10 +39,23 @@ public class BuildingActivity extends AppCompatActivity {
         buildingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Intent intent = new Intent(BuildingActivity.this, DetailActivity.class);
+                int buildingNum = getBuildingNum(buildingListView.getItemAtPosition(i).toString());
+                intent.putExtra("buildingNum", buildingNum);
+                intent.putExtra("buildingName", buildingListView.getItemAtPosition(i).toString());
+                startActivity(intent);
             }
         });
 
+    }
+
+    public int getBuildingNum(String title){
+        for(int i=0; i<buildingNames.size(); i++){
+            if(chosenCampus.getBuildings().get(i).getBuildingTitle().equals(title)){
+                return chosenCampus.getBuildings().get(i).getBuildingNum();
+            }
+        }
+        return -1;
     }
 
     public void populateBuildings(){

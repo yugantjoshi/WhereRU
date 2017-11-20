@@ -23,7 +23,6 @@ public class Building implements Serializable {
         buildingNum = in.readInt();
     }
 
-
     public int getBuildingNum() {
         return buildingNum;
     }
