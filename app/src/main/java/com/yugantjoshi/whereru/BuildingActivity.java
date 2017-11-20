@@ -5,14 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.yugantjoshi.whereru.model.Building;
 import com.yugantjoshi.whereru.model.Campus;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class BuildingActivity extends AppCompatActivity {
 
@@ -20,7 +20,6 @@ public class BuildingActivity extends AppCompatActivity {
     private ListView buildingListView;
     private ArrayAdapter<String> buildingNamesAdapter;
     private ArrayList<String> buildingNames;
-    private List<Building> buildingList;
     private Campus chosenCampus;
 
     @Override
@@ -35,6 +34,13 @@ public class BuildingActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(chosenCampus.getCampusTitle());
 
         populateBuildings();
+
+        buildingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
 
     }
 
