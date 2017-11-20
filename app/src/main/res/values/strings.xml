@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">WhereRU</string>
-    <string name="title_activity_detail">Livingston Student Housing Building B</string>
     <string name="action_settings">Settings</string>
     <string name="description">Description</string>
     <string name="address">Address</string>
     <string name="button_directions">Directions</string>
-    <string name="large_text">Multiple mid rise buildings housing 1,500 students located on Joyce Kilmer Ave. and Rockefeller Road on Livingston Campus.\nRetail spaces to occupy the first floor B building will house 3 screen movie theater giving this campus a mix use environment."</string>
 </resources>

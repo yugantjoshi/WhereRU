@@ -31,8 +31,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/large_text" />
+            android:layout_marginTop="5dp" />
 
         <View
             android:layout_width="match_parent"
@@ -54,18 +53,18 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
             <TextView
+                android:id="@+id/street"
                 android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="address street" />
+                android:layout_marginLeft="16dp" />
 
         </LinearLayout>
         <TextView
+            android:id="@+id/city_state_postal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:text="address city, state postal" />
+            android:layout_marginLeft="16dp" />
 
         <Button
             android:id="@+id/directions_button"

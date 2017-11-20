@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.yugantjoshi.whereru.api.WhereRUAPI;
 
@@ -52,11 +53,13 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<WhereRUAPI> call, Response<WhereRUAPI> response) {
                 Log.d("RESPONSE","onResponse");
+
             }
 
             @Override
             public void onFailure(Call<WhereRUAPI> call, Throwable t) {
                 Log.d("RESPONSE","onFailure");
+                Toast.makeText(DetailActivity.this, "Could not get info", Toast.LENGTH_SHORT).show();
             }
         });
 
