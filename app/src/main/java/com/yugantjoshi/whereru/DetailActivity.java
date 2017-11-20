@@ -1,5 +1,7 @@
 package com.yugantjoshi.whereru;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -10,10 +12,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yugantjoshi.whereru.api.WhereRUAPI;
+
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DetailActivity extends AppCompatActivity {
 
     TextView description, street, cityStatePostal;
+    Button getDirectionsButton;
     String longitude, latitude;
     public static final String BASE_URL = "http://rumaps.rutgers.edu/bldgnum/";
     int buildingNum = -1;
@@ -40,6 +46,7 @@ public class DetailActivity extends AppCompatActivity {
         description = (TextView)findViewById(R.id.detail_description);
         street = (TextView)findViewById(R.id.street);
         cityStatePostal = (TextView)findViewById(R.id.city_state_postal);
+        getDirectionsButton = (Button)findViewById(R.id.directions_button);
 
         String title = getIntent().getStringExtra("buildingName");
         buildingNum = getIntent().getIntExtra("buildingNum",-1);
@@ -48,6 +55,13 @@ public class DetailActivity extends AppCompatActivity {
         toolbarLayout.setTitle(title);
 
         getCurrentBuildingInfoUpdate();
+
+        getDirectionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchDirections(latitude, longitude);
+            }
+        });
     }
 
     public void getCurrentBuildingInfoUpdate(){
@@ -84,6 +98,14 @@ public class DetailActivity extends AppCompatActivity {
                 Toast.makeText(DetailActivity.this, "Could not get info", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void launchDirections(String latitude, String longitude){
+        Uri gmmIntentUri = Uri.parse("google.navigation:q="+latitude+","+longitude);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+
 
     }
 }
