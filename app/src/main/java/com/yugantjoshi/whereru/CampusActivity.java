@@ -2,6 +2,7 @@ package com.yugantjoshi.whereru;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,7 +13,7 @@ import com.yugantjoshi.whereru.model.Campus;
 
 import java.util.ArrayList;
 
-public class BuildingsActivity extends AppCompatActivity {
+public class CampusActivity extends AppCompatActivity {
 
     Campus CAC, BUS, LIV, C_D;
     ArrayList<Building> collegeAveBuildings, buschBuildings, livingstonBuildings, cookDouglassBuildings;
@@ -23,14 +24,14 @@ public class BuildingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buildings);
+        setContentView(R.layout.activity_campus);
 
         buildCampus();
 
         campusListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Log.d("Clicked",String.valueOf(i));
             }
         });
 
