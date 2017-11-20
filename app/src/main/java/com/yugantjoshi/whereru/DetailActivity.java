@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yugantjoshi.whereru.api.WhereRUAPI;
@@ -22,6 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetailActivity extends AppCompatActivity {
 
+    TextView description, street, cityStatePostal;
+
     public static final String BASE_URL = "http://rumaps.rutgers.edu/bldgnum/";
     int buildingNum = -1;
     @Override
@@ -30,6 +33,10 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        description = (TextView)findViewById(R.id.detail_description);
+        street = (TextView)findViewById(R.id.street);
+        cityStatePostal = (TextView)findViewById(R.id.city_state_postal);
 
         String title = getIntent().getStringExtra("buildingName");
         buildingNum = getIntent().getIntExtra("buildingNum",-1);
@@ -52,8 +59,7 @@ public class DetailActivity extends AppCompatActivity {
         whereRUAPICall.enqueue(new Callback<WhereRUAPI>() {
             @Override
             public void onResponse(Call<WhereRUAPI> call, Response<WhereRUAPI> response) {
-                Log.d("RESPONSE","onResponse");
-
+                Log.d("RESPONSE",String.valueOf(response));
             }
 
             @Override
